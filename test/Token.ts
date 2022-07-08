@@ -4,7 +4,7 @@ import { ethers } from "hardhat";
 
 describe("Token contract", function () {
   async function deployTokenFixture() {
-    const Token = await ethers.getContractFactory('Token');
+    const Token = await ethers.getContractFactory('GLDToken');
     const [owner, address1, address2] = await ethers.getSigners();
     const hardhatToken = await Token.deploy();
 
@@ -58,7 +58,7 @@ describe("Token contract", function () {
 
       await expect(
         hardhatToken.connect(address1).transfer(owner.address, 1)
-      ).to.be.revertedWith('Error: not enough tokens');
+      ).to.be.revertedWith('ERC20: transfer amount exceeds balance');
 
       expect(await hardhatToken.balanceOf(owner.address)).to.equal(
         initialOwnerBalance
