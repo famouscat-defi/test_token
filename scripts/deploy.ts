@@ -8,20 +8,11 @@ async function main() {
     balance: (await owner.getBalance()).toString()
   });
 
-  const Token2 = await ethers.getContractFactory('Token2');
-  const token2 = await Token2.deploy();
-
-  await token2.deployed();
-
-  const Token3 = await ethers.getContractFactory('Token3');
-  const token3 = await Token3.deploy()
-
-  await token3.deployed();
+  const Flashloan = await ethers.getContractFactory('Flashloan');
+  const token2 = await Flashloan.deploy("0x506B0B2CF20FAA8f38a4E2B524EE43e1f4458Cc5");
 
   
-
   console.log("token2 deployed at:", token2.address);
-  console.log('token3 deployed at:', token3.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
