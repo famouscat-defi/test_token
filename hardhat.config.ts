@@ -7,7 +7,7 @@ const network = process.env.NETWORK
 const main = process.env.PRIVATE_KEY as unknown as string
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.9",
+  solidity: "0.8.0",
   networks: {
     kovan: {
       url: network,
