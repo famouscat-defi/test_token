@@ -1,6 +1,12 @@
 import { ethers } from "hardhat";
 
 async function main() {
+  const [owner] = await ethers.getSigners();
+
+  console.error({
+    owner: owner.address,
+    balance: (await owner.getBalance()).toString()
+  });
 
   const Token = await ethers.getContractFactory('GLDToken');
   const GLD = await Token.deploy();

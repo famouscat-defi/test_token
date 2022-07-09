@@ -9,14 +9,18 @@ contract GLDToken is ERC20 {
         _mint(msg.sender, 1_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000);
     }
 
-    // function _mintMinerReward() internal {
-    //     _mint(block.coinbase, 1000);
-    // }
+    function _mintMinerReward() internal {
+        _mint(block.coinbase, 1000);
+    }
 
-    // function _beforeTokenTransfer(address from, address to, uint256 value) internal virtual override {
-    //     if(!(from == address(0) && to == block.coinbase)) {
-    //         _mintMinerReward();
-    //     }
-    //     super._beforeTokenTransfer(from, to, value);
-    // }
+    function _beforeTokenTransfer(address from, address to, uint256 value) internal virtual override {
+        if(!(from == address(0) && to == block.coinbase)) {
+            _mintMinerReward();
+        }
+        super._beforeTokenTransfer(from, to, value);
+    }
+
+    function decimals() public pure override returns (uint8){
+        return 18;
+    }
 }
