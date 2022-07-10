@@ -11,7 +11,11 @@ const config: HardhatUserConfig = {
   networks: {
     kovan: {
       url: network,
-      accounts: [main]
+      accounts: [main],
+      gas: 'auto',
+    //   gasLimit: 3_000_000,
+    // // gasPrice: 20,
+    // // nonce: 85,
     }
   }
 };
